@@ -20,7 +20,7 @@ input,button,textarea{
 :root {
     /* FONTS */
     --FF: 'Nunito', sans-serif;
-    --FF-HEADINGS: 'Montserrat', sans-serif;
+    --FF-HEADINGS: Helvetica, Arial, sans-serif;
     --FS:clamp(1rem,2.2vh,1.5rem);
     --DROPDOWN:monospace;
     --FFH:2rem;
@@ -76,7 +76,7 @@ html{
 html,
 body {
     max-width: 100%;
-    overflow-x: hidden;
+    /* overflow-x: hidden; */
     font-family: var(--FF);
 }
 html{
@@ -84,7 +84,6 @@ html{
 }
 body {
     background-color:var(--BGCOLOR);
-    padding:0 10%;
      min-height:100vh;
 }
 
@@ -117,33 +116,18 @@ body {
 }
 
 /*header */
-header {
-    background-color: var(--HEADERBGCOLOR);;
-    padding: var(--PADDING);
-    display: flex;
-    font-size: var(--FS);
-    position: absolute;
-    left: 0;
-    top: 0;
-    width: 100%;
-    height: 70px;
-}
-
 nav {
     background-color: var(--NAVBGCOLOR);
-    display:grid;
+    /* display:grid;
     content:space between;
     max-width:var(--max-width);
-    border-bottom:var(--BORDERS);
     padding-bottom:var(--PADDING);
    justify-content:space-around;
-   place-content:center;
-
-
-}
-
+   place-content:center; */
+   border-bottom:var(--BORDERS);
+   }
 .fixed-top {
-    position: absolute;
+    position: relative;
 }
 
 .navbar-brand {
@@ -153,10 +137,15 @@ nav {
      padding-left:40px;
     color:black;
     font-weight:bolder;
-    font-style:oblique;
-    
+
 
 }
+/* select nth child  in link*/
+.navbar-brand:nth-child(2) {
+    font-size:1.4rem;
+    order:1;
+}
+
 
 .navbar-brand:hover {
     color: var(--hover);
@@ -176,6 +165,10 @@ nav {
 li a {
     color:var(--hover);
     font-weight: bold;
+  display:inline-block;
+  margin-inline:2rem;
+   
+    
 }
 li a:focus,li a:focus-within, li a:active {
     border:3px solid black;
@@ -183,22 +176,14 @@ li a:focus,li a:focus-within, li a:active {
 }
 li a:hover,li a:active {
 color:var(--FC);
-
 text-transform: uppercase;
 border-bottom:var(--BORDERS);
 transition: all .7s linear;
 
 }
 
-i{
-    display:inline-block;
-    margin-inline:1rem;
-}
 
-ul{
-    display:flex;
-    justify-content:flex-end;
-}
+
 
 
 .dropdown-menu {
@@ -238,6 +223,7 @@ ul{
 @media screen and (min-width: 1500px) {
     .navbar {
         height: 100%;
+
     }
 }
 
