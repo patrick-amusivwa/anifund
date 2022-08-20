@@ -146,12 +146,8 @@ nav {
     order:1;
 }
 
-
 .navbar-brand:hover {
     color: var(--hover);
-    transition:all 1s ease-in-out;
-    transform:translateY(5px) scale(0.9);
-    text-transform:uppercase;
     
 }
 .navbar-brand:focus-within{
@@ -174,10 +170,9 @@ li a:focus,li a:focus-within, li a:active {
     border:3px solid black;
     filter:brightness(120%);
 }
-li a:hover,li a:active {
+li a:hover {
 color:var(--FC);
 text-transform: uppercase;
-border-bottom:var(--BORDERS);
 transition: all .7s linear;
 
 }
