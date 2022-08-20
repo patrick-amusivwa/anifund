@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<html lang="en_us">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="description" content="animal crowd funding">
+    <meta name="keywords" content="pets, shelter, dog, cat">
+    <meta name="author" content="student_name">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous">
+    </script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous">
+    </script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous">
+    </script>
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.3/css/all.css" integrity="sha384-UHRtZLI+pbxtHCWp1t77Bi1L4ZtiqrqD80Kn4Z8NTSRyMA2Fd33n5dQ8lWUE00s/" crossorigin="anonymous" />
+    <link rel="stylesheet" href="assets/css/style.css">
+    <link rel="icon" href="favicon.ico" type="image/x-icon">
+    <title>animal crowdfund || contact us </title>
+</head>
+
+<body>
+   <!-- NAVBAR -->
+    <header>
+        <nav class="navbar navbar-expand-lg navbar-custom fixed-top">
+            <a class="navbar-brand" href="index.html">animal crowdfund <i class="fas fa-paw" aria-hidden="true"></i></a>
+            <button class="navbar-toggler navbar-light" type="button" data-toggle="collapse"
+                data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
+                aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav mr-auto">
+                    <li class="nav-item active">
+                        <a class="nav-link" href="index.html" aria-label="link to home page">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="about.html" aria-label="link to about page">About</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="contact.html" aria-label="link to contact page">contact</a>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle navbarDropdown" id="navbarDropdownSuccessStories" href="#"
+                            role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            Success Stories
+                        </a>
+                        <div class="dropdown-menu" aria-labelledby="navbarDropdownSuccessStories">
+                            <a class="dropdown-item" href="marley.html" aria-label="link to Marley's story">Marley</a>
+                            <a class="dropdown-item" href="lassie.html" aria-label="link to Lassie's story">Lassie</a>
+                            <a class="dropdown-item" href="felix.html" aria-label="link to Felix's story">Felix</a>
+                        </div>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle navbarDropdown" id="navbarDropdownSupportUs" href="#"
+                            role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            Support Us
+                        </a>
+                        <div class="dropdown-menu" aria-labelledby="navbarDropdownSupportUs">
+                            <a class="dropdown-item" href="https://paypal.me/graperavies?locale.x=en_GB" rel="noopener"
+                                target="_blank" aria-label="link to paypal for donations">Donate</a>
+                            <a class="dropdown-item" href="contact.html"
+                                aria-label="link to volunteer/contact us form">Volunteer<span
+                                    class="sr-only">(current)</span></a>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+        </nav>
+    </header>
+    <div id="page-container">
+        <div id="content-wrap">
+    <!-- ||CONTACT FORM -->
+            <section class="form">
+                <div class="row form-outer justify-content-center">
+                    <div class="form-input col-md-7">
+                        <form method="post" action="info.php" class="contactus-form">
+                            <h2 class="section-title form-title text-center">Contact Us</h2>
+                            <div class="row">
+                                <div class="input col-6">
+                                    <label class="form-check-label" for="fname">
+                                        First Name:
+                                    </label>
+                                    <input type="text" class="form-control" name="first_name" id="fname"
+                                        placeholder="First name" required="required">
+                                </div>
+                                <div class="input col-6">
+                                    <label class="form-check-label" for="lname">
+                                        Last Name:
+                                    </label>
+                                    <input type="text" class="form-control" name="last_name" id="lname"
+                                        placeholder="Last name" required="required">
+                                </div>
+                                <div class="input col-md-6">
+                                    <label class="form-check-label" for="inputEmail">
+                                        Email:
+                                    </label>
+                                    <input type="email" class="form-control" name="email_address" id="inputEmail"
+                                        placeholder="Email" required="required">
+                                </div>
+                                <div class="input col-md-6">
+                                    <label class="form-check-label" for="inputNumber">
+                                        Telephone (optional):
+                                    </label>
+                                    <input type="number" class="form-control" name="phone_number" id="inputNumber"
+                                        placeholder="Telephone (optional)">
+                                </div>
+                                <div class="input col-12">
+                                    <label class="form-check-label" for="inputAddress">
+                                        Address (optional):
+                                    </label>
+                                    <textarea id="inputAddress" class="form-control" name="address" rows="6"
+                                        placeholder="Address (optional)">
+                            </textarea>
+                                </div>
+                                <div class="box-container">
+                                    <div class="row">
+                                        <div class="input col-12 text-justify">
+                                            <p><b>Why do you want to contact us today?</b></p>
+                                            <div class="form-check">
+                                                <input class="form-check-input" type="radio" name="query_reason"
+                                                    id="volunteer" value="request_volunteer_info">
+                                                <label class="form-check-label" for="volunteer">
+                                                    I'd like to volunteer
+                                                </label>
+                                            </div>
+                                            <div class="form-check">
+                                                <input class="form-check-input" type="radio" name="query_reason"
+                                                    id="charity" value="request_charity_info">
+                                                <label class="form-check-label" for="charity">
+                                                    I'd like to know more about your charity
+                                                </label>
+                                            </div>
+                                            <div class="form-check">
+                                                <input class="form-check-input" type="radio" name="query_reason"
+                                                    id="donation" value="regular_donation">
+                                                <label class="form-check-label" for="donation">
+                                                    I'd like to set up a regular donation
+                                                </label>
+                                            </div>
+                                            <div class="form-check">
+                                                <input class="form-check-input" type="radio" name="query_reason"
+                                                    id="pet_keeping" value="info_pet_keeping">
+                                                <label class="form-check-label" for="pet_keeping">
+                                                    I'd like some advice on pet keeping
+                                                </label>
+                                            </div>
+                                            <div class="form-check">
+                                                <input class="form-check-input" type="radio" name="query_reason"
+                                                    id="adoption" value="info_adoption">
+                                                <label class="form-check-label" for="adoption">
+                                                    I'd like more information on the adoption process
+                                                </label>
+                                            </div>
+                                        </div>
+                                        <div class="input text-justify form-group-row col-12 contact-pref">
+                                            <p><b>Please contact me via:</b></p>
+                                            <div class="form-check form-check-inline">
+                                                <input class="form-check-input" type="checkbox" value="email"
+                                                    name="contact_pref" id="contact_pref_email">
+                                                <label class="form-check-label" for="contact_pref_email">
+                                                    Email
+                                                </label>
+                                            </div>
+                                            <div class="form-check form-check-inline">
+                                                <input class="form-check-input" type="checkbox" value="telephone"
+                                                    name="contact_pref" id="contact_pref_telephone">
+                                                <label class="form-check-label" for="contact_pref_telephone">
+                                                    Telephone
+                                                </label>
+                                            </div>
+                                            <div class="form-check form-check-inline">
+                                                <input class="form-check-input" type="checkbox" value="post"
+                                                    name="contact_pref" id="contact_pref_post">
+                                                <label class="form-check-label" for="contact_pref_post">
+                                                    Post
+                                                </label>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-12">
+                                    <label for="query_free_text">
+                                        Please type your query here:
+                                    </label>
+                                    <textarea class="form-control" id="query_free_text" rows="10" name="query_details"
+                                        placeholder="Please type your query here." required="required"></textarea>
+                                </div>
+                            </div>
+                            <div class="text-center">
+                                <input class="btn btn-lg btn-primary btn-submit grow" type="submit" value="Submit">
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </section>
+            <!-- ||FOOTER-->
+            <footer>
+                <div class="container-fluid footer-content">
+                    <div class="row">
+                        <div class="col-sm-12 col-md-6">
+                            <div class="smedia-links">
+                                <a href="https://www.facebook.com" target="_blank" rel="noopener"
+                                    aria-label="link to facebook page"><i class="fab fa-facebook-square grow"></i></a>
+                                <a href="https://www.twitter.com" target="_blank" rel="noopener"
+                                    aria-label="link to twitter page"><i class="fab fa-twitter-square grow"></i></a>
+                                <a href="https://www.instagram.com" target="_blank" rel="noopener"
+                                    aria-label="link to instagram page"><i class="fab fa-instagram grow"></i> </a>
+                            </div>
+                        </div>
+                        <div class="col-sm-12 col-md-6 ">
+                            <div class="contact">
+                                <p>Contact us<br>
+                                    Tel:123 456 789<br>
+                                    Email: studentemail@school.ac.country
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </footer>
+        </div>
+    </div>
+    <!-- cdn link for firebase-->
+    <script src="https://www.youtube.com/redirect?event=video_description&redir_token=QUFFLUhqbl9ZYm5BUjg0ZkxZLTBaVlpGSDY1cmNUUlZDZ3xBQ3Jtc0ttb0FhZzIxYUltUWpuUm9CY2U5ZXhNbFNnbVdYNWFvYkU5a042TlEwMXJac08yLThPQmJXeWNIM1Jpc09QTVk0TUs3TTdtOF8wc08tZkw1T2I3MGJSTUIxbENnMi1QdnpCdWdqTGU3cWUtQWk5N1JZUQ&q=https%3A%2F%2Fcdnjs.cloudflare.com%2Fajax%2Flibs%2Ffirebase%2F7.14.1-0%2Ffirebase.js&v=RAWHXRTKTHw"></script>
+    <script src="main.js"></script>
+    
+
+</html>
