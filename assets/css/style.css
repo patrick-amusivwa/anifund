@@ -87,7 +87,9 @@ body {
     padding:0 10%;
      min-height:100vh;
 }
-
+.nowrap{
+    white-space:nowrap;
+}
 .row {
     margin-right:var(--MARGINR);
     margin-left: var(--MARGINL);
