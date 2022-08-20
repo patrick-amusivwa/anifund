@@ -87,9 +87,7 @@ body {
     padding:0 10%;
      min-height:100vh;
 }
-.nowrap{
-    white-space:nowrap;
-}
+
 .row {
     margin-right:var(--MARGINR);
     margin-left: var(--MARGINL);
@@ -152,15 +150,11 @@ nav {
     font-family: var(--FF-HEADINGS);
     font-family: var(-FF);
     font-size: var(--FFH);
-    letter-spacing: 0.25rem;
-   background-color:var(--HELP);
-    padding-left:40px;
+     padding-left:40px;
     color:black;
-    text-transform:uppercase;
     font-weight:bolder;
     font-style:oblique;
-    border:2px solid var(--FC);
-    border-radius:15px;
+    
 
 }
 
@@ -182,9 +176,6 @@ nav {
 li a {
     color:var(--hover);
     font-weight: bold;
-    padding: 1.5rem;
- display:inline-block;
- margin-inline:1rem;
 }
 li a:focus,li a:focus-within, li a:active {
     border:3px solid black;
@@ -201,7 +192,12 @@ transition: all .7s linear;
 
 i{
     display:inline-block;
-    margin-inline:2rem;
+    margin-inline:1rem;
+}
+
+ul{
+    display:flex;
+    justify-content:flex-end;
 }
 
 
