@@ -541,7 +541,7 @@ iframe {
 }
 
 .form-input {
-    background-color: rgba(243, 219, 7, 0.76);
+    background-color: rgba(177, 186, 222, .9);
     color: var(--FC);
     padding: 40px;
     margin-top: 40px;
@@ -577,6 +577,7 @@ label {
 .btn-submit {
     margin-top: 40px;
 }
+
 
 /*Marley's Page*/
 .animal-jumbo {
