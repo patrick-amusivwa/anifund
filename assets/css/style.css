@@ -78,6 +78,7 @@ body {
     max-width: 100%;
     /* overflow-x: hidden; */
     font-family: var(--FF);
+    overflow-x: hidden;
 }
 html{
     background:var(--BGCOLOR);
