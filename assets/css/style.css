@@ -31,7 +31,7 @@ input,button,textarea{
 
     /* ||COLORS */
     --hover: #EDF0FD;
-    --BLUE: #6880EA;
+    --BLUE: #b1980d;
     --FC: #0A1548;
     --GREY: #B1BADE;
     --HEADERBGCOLOR: #FFF05A;
@@ -117,7 +117,7 @@ body {
 
 /*header */
 nav {
-    background-color: var(--NAVBGCOLOR);
+    /* background-color: var(--NAVBGCOLOR); */
     /* display:grid;
     content:space between;
     max-width:var(--max-width);
@@ -125,6 +125,9 @@ nav {
    justify-content:space-around;
    place-content:center; */
    border-bottom:var(--BORDERS);
+background: linear-gradient(315deg, #919386, #acae9f);
+box-shadow:  -20px -20px 18px #898b7f,
+             20px 20px 18px #b9bbab;
    }
 .fixed-top {
     position: relative;
@@ -275,11 +278,11 @@ transition: all .7s linear;
 
 /* grow animation from https://travis.media/how-to-make-an-item-grow-on-hover-with-css*/
 .grow {
-    transition: all 2s ease-in-out;
+    transition: all .5s ease-in-out;
 }
 
 .grow:hover {
-    transform: rotatex(360deg) scale(1.2)  translateX(20px);
+    transform:scale(1.2);
 }
 
 /* our goals section */
@@ -378,12 +381,14 @@ footer {
 
 .smedia-links {
     padding-top:var(--);
+    text-align:center;
 }
 
 .smedia-links a {
     color: var(--FC);
     font-size: 2.00rem;
     letter-spacing: 10px;
+   
 }
 
 .smedia-links a:hover {
