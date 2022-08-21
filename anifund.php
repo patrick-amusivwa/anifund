@@ -1,29 +1,3 @@
-<?php
-// We need to use sessions, so you should always start sessions using the below code.
-session_start();
-// If the user is not logged in redirect to the login page...
-if (!isset($_SESSION['loggedin'])) {
-    header('Location: Account/index.html');
-    exit;
-}
-$DATABASE_HOST = 'localhost';
-$DATABASE_USER = 'root';
-$DATABASE_PASS = '';
-$DATABASE_NAME = 'animals';
-$con = mysqli_connect($DATABASE_HOST, $DATABASE_USER, $DATABASE_PASS, $DATABASE_NAME);
-if (mysqli_connect_errno()) {
-    exit('Failed to connect to MySQL: ' . mysqli_connect_error());
-}
-// We don't have the password or email info stored in sessions so instead we can get the results from the database.
-$stmt = $con->prepare('SELECT password, email FROM users WHERE id = ?');
-// In this case we can use the account ID to get the account info.
-$stmt->bind_param('i', $_SESSION['id']);
-$stmt->execute();
-$stmt->bind_result($password, $email);
-$stmt->fetch();
-$stmt->close();
-?>
-
 <!DOCTYPE html>
 <html lang="en">
 
@@ -33,19 +7,11 @@ $stmt->close();
     <meta name="keywords" content="pets, shelter, dog, cat">
     <meta name="author" content="student_name">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
-        integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
-    <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js"
-        integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous">
-    </script>
-    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
-        integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous">
-    </script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"
-        integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous">
-    </script>
-    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.3/css/all.css"
-        integrity="sha384-UHRtZLI+pbxtHCWp1t77Bi1L4ZtiqrqD80Kn4Z8NTSRyMA2Fd33n5dQ8lWUE00s/" crossorigin="anonymous" />
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.3/css/all.css" integrity="sha384-UHRtZLI+pbxtHCWp1t77Bi1L4ZtiqrqD80Kn4Z8NTSRyMA2Fd33n5dQ8lWUE00s/" crossorigin="anonymous" />
     <link rel="stylesheet" href="assets/css/style.css">
     <title>animal crowdfund || Home</title>
     <script src="https://kit.fontawesome.com/4dd090434a.js" crossorigin="anonymous"></script>
@@ -54,76 +20,61 @@ $stmt->close();
 <body>
     <!-- NAVBAR -->
     <header>
-        <nav class="navbar navbar-expand-lg navbar-custom fixed-top" id="search-id">
+        <nav class="navbar navbar-expand-lg navbar-custom fixed-top">
             <a class="navbar-brand" href="index.html">animal crowdfund <i class="fas fa-paw" aria-hidden="true"></i></a>
-            <a class="navbar-brand" class="login" href="home.php"><img src="Account/uploads/avatar.jpg"> </i></a>
-            <nav class="navbar navbar-expand-lg navbar-custom fixed-top">
-                <a class="navbar-brand" href="index.html">AniFUND<i class="fas fa-paw" aria-hidden="true"></i></a>
-                <a class="navbar-brand" class="login" href="index.html"><i class="fa-solid fa-user-lock"
-                        aria-hidden="true"></i></a>
+            <a class="navbar-brand" class="login" href="index.html"><i class="fa-solid fa-user-lock" aria-hidden="true"></i></a>
+            <div class="group">
+                <svg class="icon" aria-hidden="true" viewBox="0 0 24 24"><g><path d="M21.53 20.47l-3.66-3.66C19.195 15.24 20 13.214 20 11c0-4.97-4.03-9-9-9s-9 4.03-9 9 4.03 9 9 9c2.215 0 4.24-.804 5.808-2.13l3.66 3.66c.147.146.34.22.53.22s.385-.073.53-.22c.295-.293.295-.767.002-1.06zM3.5 11c0-4.135 3.365-7.5 7.5-7.5s7.5 3.365 7.5 7.5-3.365 7.5-7.5 7.5-7.5-3.365-7.5-7.5z"></path></g></svg>
+                <input placeholder="Search" type="search" class="input">
+              </div>
 
-                <div class="group">
-                    <svg class="icon" aria-hidden="true" viewBox="0 0 24 24">
-                        <g>
-                            <path
-                                d="M21.53 20.47l-3.66-3.66C19.195 15.24 20 13.214 20 11c0-4.97-4.03-9-9-9s-9 4.03-9 9 4.03 9 9 9c2.215 0 4.24-.804 5.808-2.13l3.66 3.66c.147.146.34.22.53.22s.385-.073.53-.22c.295-.293.295-.767.002-1.06zM3.5 11c0-4.135 3.365-7.5 7.5-7.5s7.5 3.365 7.5 7.5-3.365 7.5-7.5 7.5-7.5-3.365-7.5-7.5z">
-                            </path>
-                        </g>
-                    </svg>
-                    <input onkeyup="search_elements()" placeholder="Search" type="text" class="search-input"
-                        id="search">
-                </div>
-
-                <button id="search-id" class="navbar-toggler navbar-light" type="button" data-toggle="collapse"
-                    data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
-                    aria-label="Toggle navigation">
-                    <span class="navbar-toggler-icon"></span>
-                </button>
-                <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                    <ul class="navbar-nav mr-auto">
-                        <li class="nav-item active">
-                            <a class="nav-link" href="index.html" aria-label="link to home page">Home<span
-                                    class="sr-only">(current)</span></a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="about.html" aria-label="link to about page">About</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="contact.html" aria-label="link to contact page">contact</a>
-                        </li>
-                        <li class="nav-item dropdown">
-                            <a class="nav-link dropdown-toggle navbarDropdown" id="navbarDropdownSuccessStories"
-                                href="#" role="button" data-toggle="dropdown" aria-haspopup="true"
-                                aria-expanded="false">
-                                Success Stories
-                            </a>
-                            <div class="dropdown-menu" aria-labelledby="navbarDropdownSuccessStories">
-                                <a class="dropdown-item" href="marley.html"
-                                    aria-label="link to Marley's story">Marley</a>
-                                <a class="dropdown-item" href="lassie.html"
-                                    aria-label="link to Lassie's story">Lassie</a>
-                                <a class="dropdown-item" href="felix.html" aria-label="link to Felix's story">Felix</a>
-                            </div>
-                        </li>
-                        <li class="nav-item dropdown">
-                            <a class="nav-link dropdown-toggle navbarDropdown" id="navbarDropdownSupportUs" href="#"
-                                role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                Support Us
-                            </a>
-                            <div class="dropdown-menu" aria-labelledby="navbarDropdownSupportUs">
-                                <a class="dropdown-item" href="https://paypal.me/graperavies?locale.x=en_GB"
-                                    target="_blank" rel="noopener" aria-label="link to paypal for donations">Donate</a>
-                                <a class="dropdown-item" href="contact.html"
-                                    aria-label="link to volunteer/contact us form">Volunteer</a>
-                            </div>
-                        </li>
-                    </ul>
-                </div>
-            </nav>
+            <button class="navbar-toggler navbar-light" type="button" data-toggle="collapse"
+                data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
+                aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav mr-auto">
+                    <li class="nav-item active">
+                        <a class="nav-link" href="index.html" aria-label="link to home page">Home<span
+                                class="sr-only">(current)</span></a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="about.html" aria-label="link to about page">About</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="contact.html" aria-label="link to contact page">contact</a>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle navbarDropdown" id="navbarDropdownSuccessStories" href="#"
+                            role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            Success Stories
+                        </a>
+                        <div class="dropdown-menu" aria-labelledby="navbarDropdownSuccessStories">
+                            <a class="dropdown-item" href="marley.html" aria-label="link to Marley's story">Marley</a>
+                            <a class="dropdown-item" href="lassie.html" aria-label="link to Lassie's story">Lassie</a>
+                            <a class="dropdown-item" href="felix.html" aria-label="link to Felix's story">Felix</a>
+                        </div>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle navbarDropdown" id="navbarDropdownSupportUs" href="#"
+                            role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            Support Us
+                        </a>
+                        <div class="dropdown-menu" aria-labelledby="navbarDropdownSupportUs">
+                            <a class="dropdown-item" href="https://paypal.me/graperavies?locale.x=en_GB" target="_blank"
+                                rel="noopener" aria-label="link to paypal for donations">Donate</a>
+                            <a class="dropdown-item" href="contact.html"
+                                aria-label="link to volunteer/contact us form">Volunteer</a>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+        </nav>
     </header>
     <div id="page-container">
         <div id="content-wrap">
-            <!-- HERO IMAGE -->
+           <!-- HERO IMAGE -->
             <section>
                 <div class="jumbotron jumbotron-fluid helpus">
                     <span role="img" aria-label="a dog and a cat cuddling peacefully on grass">
@@ -224,67 +175,66 @@ $stmt->close();
                             why we are always available for advice, support and encouragement
                             Just give us a ring, or an email! </figcaption>
                     </figure> -->
-            </article>
-
+                </article>
+                     
             </section>
-            </section>
-            <!-- TRIAL -->
-            <section class="header_cards">
-                <h2>more about what we do </h2>
-            </section>
-            <section class="cards">
-
-                <div class="card">
-                    <div class="content">
-                        <div class="front">
-                            <h3 class="title"><img src="assets/images/one.jpg" alt=""></h3>
-                            <p class="subtitle">proper medical attention</p>
-                        </div>
-
-                        <div class="back">
-                            <p class="description">
-                                every pet that comes to us a fighting chance.With proper medical attention and training,
-                                we believe every pet can be transformed
-                                into the perfect addition
-                            </p>
+        </section>
+                    <!-- TRIAL -->
+                    <section class="header_cards">
+                        <h2>more about what we do </h2>
+                    </section>
+                 <section class="cards">
+                   
+                    <div class="card">
+                        <div class="content">
+                            <div class="front">
+                                <h3 class="title"><img src="assets/images/one.jpg" alt=""></h3>
+                                <p class="subtitle">proper medical attention</p>
+                            </div>
+                 
+                            <div class="back">
+                                <p class="description">
+                                    every pet that comes to us a fighting chance.With proper medical attention and training, we believe every pet can be transformed
+                            into the perfect addition
+                                </p>
+                            </div>
                         </div>
                     </div>
-                </div>
 
-                <div class="card">
-                    <div class="content">
-                        <div class="front">
-                            <h3 class="title"><img src="assets/images/twojpg.jpg" alt=""></h3>
-                            <p class="subtitle">second-chances</p>
-                        </div>
-
-                        <div class="back">
-                            <p class="description">
-                                we believe in second chances.That is why we will never put an unhealthy pet down.
-                            </p>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="card">
-                    <div class="content">
-                        <div class="front">
-                            <h3 class="title"><img src="assets/images/three.jpg" alt=""></h3>
-                            <p class="subtitle">help new owners</p>
-                        </div>
-
-                        <div class="back">
-                            <p class="description">
-                                we understand how hard it can be adjusting to your new life as a pet owner, which is
-                                why we are always available for advice, support and encouragement
-                                Just give us a ring, or an email!
-                            </p>
+                    <div class="card">
+                        <div class="content">
+                            <div class="front">
+                                <h3 class="title"><img src="assets/images/twojpg.jpg" alt=""></h3>
+                                <p class="subtitle">second-chances</p>
+                            </div>
+                 
+                            <div class="back">
+                                <p class="description">
+                                    we believe in second chances.That is why we will never put an unhealthy pet down.
+                                </p>
+                            </div>
                         </div>
                     </div>
-                </div>
-            </section>
 
-            <!-- SUCESS NARATION -->
+                    <div class="card">
+                        <div class="content">
+                            <div class="front">
+                                <h3 class="title"><img src="assets/images/three.jpg" alt=""></h3>
+                                <p class="subtitle">help new owners</p>
+                            </div>
+                 
+                            <div class="back">
+                                <p class="description">
+                                    we understand how hard it can be adjusting to your new life as a pet owner, which is
+                            why we are always available for advice, support and encouragement
+                            Just give us a ring, or an email!
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                  </section>
+           
+           <!-- SUCESS NARATION -->
             <!-- HERO IMAGE FOR OUR TEAM  -->
             <section class="our-team">
                 <div class="row">
@@ -318,10 +268,9 @@ $stmt->close();
                     </div>
                 </div>
             </section>
-            <!-- FOOTER -->
-            <footer id="search-id">
-                <a class="navbar-brand" href="index.html">animal crowdfund <i class="fas fa-paw"
-                        aria-hidden="true"></i></a>
+           <!-- FOOTER -->
+            <footer>
+                <a class="navbar-brand" href="index.html">animal crowdfund <i class="fas fa-paw" aria-hidden="true"></i></a>
                 <div class="container-fluid footer-content">
                     <div class="row">
                         <div class="col-sm-12 col-md-6">
@@ -347,21 +296,6 @@ $stmt->close();
             </footer>
         </div>
     </div>
-    <script>
-    function search_element() {
-        let input = document.getElementById('search').value
-        input = input.toLowerCase();
-        let x = document.getElementsByClassName(['our-team', 'hero', '']);
-
-        for (i = 0; i < x.length; i++) {
-            if (!x[i].innerHTML.toLowerCase().includes(input)) {
-                x[i].style.display = "none";
-            } else {
-                x[i].style.display = "search-items";
-            }
-        }
-    }
-    </script>
 </body>
 
 </html>
