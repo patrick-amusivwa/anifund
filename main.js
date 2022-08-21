@@ -7,15 +7,15 @@ const firebaseConfig = {
     messagingSenderId: "361516755037",
     appId: "1:361516755037:web:1124c31ec0723792bd85b4",
     measurementId: "G-PR7SV86EMX"
-  };
-    // Initialize Firebase
+};
+// Initialize Firebase
 firebase.initializeApp(firebaseConfig);
 // reference firebase database
-var contactForm =firebase.database().ref('contactForm');
+var contactForm = firebase.database().ref('contactForm');
 
-document.getElementById('contactForm').addEventListener('submit',submitForm);
+document.getElementById('contactForm').addEventListener('submit', submitForm);
 
-function submitForm(e){
+function submitForm(e) {
     e.preventDefault();
     var fname = getElementByval('fname');
     var lname = getElementByval('lname');
@@ -24,17 +24,36 @@ function submitForm(e){
     var address = getElementByval('inputAddress');
     var volunteer = getElementByval('volunteer');
     var charity = getElementByval('charity');
-    var donation= getElementByval('donation');
-    var petkeeping= getElementByval('pet_keeping');
-    var adoption= getElementByval('adoption');
-    var contemail= getElementByval('contact_pref_email');
-    var contactphone= getElementByval('contact_pref_telephone');
-    var contactpst= getElementByval('contact_pref_post');
-    var queryt= getElementByval('contact_pref_text');
-    
-    console.log(fname,lname,email,number,address,volunteer,charity,donation,petkeeping,adoption,contemail,contactphone,contactpst,queryt);
+    var donation = getElementByval('donation');
+    var petkeeping = getElementByval('pet_keeping');
+    var adoption = getElementByval('adoption');
+    var contemail = getElementByval('contact_pref_email');
+    var contactphone = getElementByval('contact_pref_telephone');
+    var contactpst = getElementByval('contact_pref_post');
+    var queryt = getElementByval('contact_pref_text');
+
+    console.log(fname, lname, email, number, address, volunteer, charity, donation, petkeeping, adoption, contemail, contactphone, contactpst, queryt);
 }
-const getElementByval =(id)=>{
+const getElementByval = (id) => {
     return document.getElementById(id).value;
 
+}
+
+
+// Search bar
+
+// JavaScript code
+function search() {
+    let input = document.getElementById('search').value
+    input = input.toLowerCase();
+    let x = document.getElementsByClassName('');
+
+    for (i = 0; i < x.length; i++) {
+        if (!x[i].innerHTML.toLowerCase().includes(input)) {
+            x[i].style.display = "none";
+        }
+        else {
+            x[i].style.display = "list-item";
+        }
+    }
 }

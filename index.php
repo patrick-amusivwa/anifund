@@ -7,11 +7,19 @@
     <meta name="keywords" content="pets, shelter, dog, cat">
     <meta name="author" content="student_name">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
-    <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
-    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
-    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.3/css/all.css" integrity="sha384-UHRtZLI+pbxtHCWp1t77Bi1L4ZtiqrqD80Kn4Z8NTSRyMA2Fd33n5dQ8lWUE00s/" crossorigin="anonymous" />
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+        integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js"
+        integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous">
+    </script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
+        integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous">
+    </script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"
+        integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous">
+    </script>
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.3/css/all.css"
+        integrity="sha384-UHRtZLI+pbxtHCWp1t77Bi1L4ZtiqrqD80Kn4Z8NTSRyMA2Fd33n5dQ8lWUE00s/" crossorigin="anonymous" />
     <link rel="stylesheet" href="assets/css/style.css">
     <title>animal crowdfund || Home</title>
     <script src="https://kit.fontawesome.com/4dd090434a.js" crossorigin="anonymous"></script>
@@ -22,11 +30,17 @@
     <header>
         <nav class="navbar navbar-expand-lg navbar-custom fixed-top">
             <a class="navbar-brand" href="index.html">animal crowdfund <i class="fas fa-paw" aria-hidden="true"></i></a>
-            <a class="navbar-brand" class="login" href="index.html"><i class="fa-solid fa-user-lock" aria-hidden="true"></i></a>
+            <a class="navbar-brand" class="login" href="Account/index.html"><i class="fa-solid fa-user"></i></a>
             <div class="group">
-                <svg class="icon" aria-hidden="true" viewBox="0 0 24 24"><g><path d="M21.53 20.47l-3.66-3.66C19.195 15.24 20 13.214 20 11c0-4.97-4.03-9-9-9s-9 4.03-9 9 4.03 9 9 9c2.215 0 4.24-.804 5.808-2.13l3.66 3.66c.147.146.34.22.53.22s.385-.073.53-.22c.295-.293.295-.767.002-1.06zM3.5 11c0-4.135 3.365-7.5 7.5-7.5s7.5 3.365 7.5 7.5-3.365 7.5-7.5 7.5-7.5-3.365-7.5-7.5z"></path></g></svg>
-                <input placeholder="Search" type="search" class="input">
-              </div>
+                <svg class="icon" aria-hidden="true" viewBox="0 0 24 24">
+                    <g>
+                        <path
+                            d="M21.53 20.47l-3.66-3.66C19.195 15.24 20 13.214 20 11c0-4.97-4.03-9-9-9s-9 4.03-9 9 4.03 9 9 9c2.215 0 4.24-.804 5.808-2.13l3.66 3.66c.147.146.34.22.53.22s.385-.073.53-.22c.295-.293.295-.767.002-1.06zM3.5 11c0-4.135 3.365-7.5 7.5-7.5s7.5 3.365 7.5 7.5-3.365 7.5-7.5 7.5-7.5-3.365-7.5-7.5z">
+                        </path>
+                    </g>
+                </svg>
+                <input placeholder="Search" type="search" class="input" id="search">
+            </div>
 
             <button class="navbar-toggler navbar-light" type="button" data-toggle="collapse"
                 data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
@@ -74,7 +88,7 @@
     </header>
     <div id="page-container">
         <div id="content-wrap">
-           <!-- HERO IMAGE -->
+            <!-- HERO IMAGE -->
             <section>
                 <div class="jumbotron jumbotron-fluid helpus">
                     <span role="img" aria-label="a dog and a cat cuddling peacefully on grass">
@@ -175,102 +189,72 @@
                             why we are always available for advice, support and encouragement
                             Just give us a ring, or an email! </figcaption>
                     </figure> -->
-                </article>
-                     
+            </article>
+
             </section>
-        </section>
-                    <!-- TRIAL -->
-                    <section class="header_cards">
-                        <h2>more about what we do </h2>
-                    </section>
-                 <section class="cards">
-                   
-                    <div class="card">
-                        <div class="content">
-                            <div class="front">
-                                <h3 class="title"><img src="assets/images/one.jpg" alt=""></h3>
-                                <p class="subtitle">proper medical attention</p>
-                            </div>
-                 
-                            <div class="back">
-                                <p class="description">
-                                    every pet that comes to us a fighting chance.With proper medical attention and training, we believe every pet can be transformed
-                            into the perfect addition
-                                </p>
-                            </div>
-                        </div>
-                    </div>
+            </section>
+            <!-- TRIAL -->
+            <section class="header_cards">
+                <h2>more about what we do </h2>
+            </section>
+            <section class="cards">
 
-                    <div class="card">
-                        <div class="content">
-                            <div class="front">
-                                <h3 class="title"><img src="assets/images/twojpg.jpg" alt=""></h3>
-                                <p class="subtitle">second-chances</p>
-                            </div>
-                 
-                            <div class="back">
-                                <p class="description">
-                                    we believe in second chances.That is why we will never put an unhealthy pet down.
-                                </p>
-                            </div>
+                <div class="card">
+                    <div class="content">
+                        <div class="front">
+                            <h3 class="title"><img src="assets/images/one.jpg" alt=""></h3>
+                            <p class="subtitle">proper medical attention</p>
                         </div>
-                    </div>
 
-                    <div class="card">
-                        <div class="content">
-                            <div class="front">
-                                <h3 class="title"><img src="assets/images/three.jpg" alt=""></h3>
-                                <p class="subtitle">help new owners</p>
-                            </div>
-                 
-                            <div class="back">
-                                <p class="description">
-                                    we understand how hard it can be adjusting to your new life as a pet owner, which is
-                            why we are always available for advice, support and encouragement
-                            Just give us a ring, or an email!
-                                </p>
-                            </div>
+                        <div class="back">
+                            <p class="description">
+                                every pet that comes to us a fighting chance.With proper medical attention and training,
+                                we believe every pet can be transformed
+                                into the perfect addition
+                            </p>
                         </div>
                     </div>
-                  </section>
-           
-           <!-- SUCESS NARATION -->
-            <!-- HERO IMAGE FOR OUR TEAM  -->
-            <section class="our-team">
-                <div class="row">
-                    <div class="col-12">
-                        <h2 class="section-title">Our Team</h2>
+                </div>
+
+                <div class="card">
+                    <div class="content">
+                        <div class="front">
+                            <h3 class="title"><img src="assets/images/twojpg.jpg" alt=""></h3>
+                            <p class="subtitle">second-chances</p>
+                        </div>
+
+                        <div class="back">
+                            <p class="description">
+                                we believe in second chances.That is why we will never put an unhealthy pet down.
+                            </p>
+                        </div>
                     </div>
-                    <div class="col-lg-6 text-center">
-                        <p class="team-text">We are proud that our on the ground team is entirely made up of volunteers.
-                            These hard-working, dedicated people come from all walks of life, and are united in their
-                            love for animals.
-                            Their hours spent volunteering for us means that we can ensure all money donated to us can
-                            go towards the animal's welfare.
-                            They are the beating heart of all we do!
-                            <br>
-                            While caring for so many animals is hard work (we house around 200!), we always make time to
-                            have fun and make friends.
-                            We have annual team building events and a Christmas party! Volunteering is a great
-                            opportunity to learn new skills,
-                            such as dog grooming, vetinary care or even just getting fit from all those walkies!
-                            <br>
-                            Do you want to join in? Click below and fill out the form provided, and we'll get back to
-                            you.
-                        </p>
-                        <!-- BUTTON FOR TEAM -->
-                        <a class="btn btn-lg form-btn " id="team-btn" href="contact.html"
-                            aria-label="link to volunteer/contact us form" role="button">Volunteer With Us</a>
-                    </div>
-                    <div class="col-lg-6 our-team-image">
-                        <span role="img" aria-label="hands linked together to make a star">
-                        </span>
+                </div>
+
+                <div class="card">
+                    <div class="content">
+                        <div class="front">
+                            <h3 class="title"><img src="assets/images/three.jpg" alt=""></h3>
+                            <p class="subtitle">help new owners</p>
+                        </div>
+
+                        <div class="back">
+                            <p class="description">
+                                we understand how hard it can be adjusting to your new life as a pet owner, which is
+                                why we are always available for advice, support and encouragement
+                                Just give us a ring, or an email!
+                            </p>
+                        </div>
                     </div>
                 </div>
             </section>
-           <!-- FOOTER -->
+
+            <!-- SUCESS NARATION -->
+
+            <!-- FOOTER -->
             <footer>
-                <a class="navbar-brand" href="index.html">animal crowdfund <i class="fas fa-paw" aria-hidden="true"></i></a>
+                <a class="navbar-brand" href="index.html">animal crowdfund <i class="fas fa-paw"
+                        aria-hidden="true"></i></a>
                 <div class="container-fluid footer-content">
                     <div class="row">
                         <div class="col-sm-12 col-md-6">
