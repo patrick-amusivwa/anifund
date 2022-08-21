@@ -413,6 +413,17 @@ footer {
         float: none;
     }
 }
+@media screen and (max-width: 419px) {
+    .footer{
+        display:flex;
+        flex-flow:column nowrap;
+    }
+    .navbar-brand{
+        display:inline-block;
+        text-align:left;
+    }
+    }
+
 
 /*about page jumbo */
 .about-jumbo {
@@ -717,7 +728,7 @@ label {
 }
 /* profile card */
 
-.card{
+/* .card{
     scroll-margin-top:8rem;
     width:min(100%,350px);
     background-color:#cbd5e1;
@@ -728,6 +739,7 @@ label {
     flex-direction:row;
     align-items:center;
     margin:2rem;
+    flex-wrap:wrap;
 }
 .card:target{
     border:2px solid purple;
@@ -738,7 +750,7 @@ label {
 }
 .card img{
     border:5px double black;
-    border-radius:50%;
+   ;
 }
 .card img:not([alt]){
 border:10px dotted red;
@@ -747,19 +759,12 @@ border:10px dotted red;
     background-color:papayawhip;
 }
 .card figcaption{
-    font-weight:bolder;
-    font-size:4rem;
+    
+    font-size:1.2rem;
     margin:1rem;
     text-align:center;
 }
-.card figcaption::first-letter{
-    font-size:1.5em;
-    text-transform:capitalize;
-}
-.card figcaption::after{
-    content:'🐬';
-    display:block;
-}
+
 .card p{
     position:relative;
 }
@@ -780,5 +785,78 @@ border:10px dotted red;
 .cards{
     display:flex;
     flex-flow:row wrap;
-    justify-content:center;
+}
+.header_cards h2{
+   text-align:center;
+   text-transform:capitalize;
+   text-decoration:underline;
+} */
+/* TRIAL */
+/* From uiverse.io by @JoseIsra */
+.cards{
+    display:flex;
+    flex-flow:row wrap;
+    justify-content:space-evenly;
+}
+.card {
+    width:min(100%,350px);
+    height:350px;
+    cursor: pointer;
+    scroll-margin-top:8rem;
+  }
+  
+  .content {
+    text-align: center;
+    position: relative;
+    transition: all 2.25s;
+    background-image:linear-gradient(to top,grey,white,orange);
+    padding: 5em;
+    transform-style: preserve-3d;
+    height:350px;
+  }
+  
+  .card:hover .content {
+    transform: rotateY(0.5turn);
+  }
+  
+  .front,
+  .back {
+    position: absolute;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    padding: 2em;
+    transform-style: preserve-3d;
+    backface-visibility: hidden;
+  }
+  
+  .title {
+    transform: translateZ(5rem);
+    font-size: 2rem;
+  }
+  
+  .subtitle {
+    transform: translateZ(2rem);
+  }
+  
+  .back {
+    transform: rotateY(0.5turn);
+    background-image:linear-gradient(to left,grey,white,orange)
+  }
+  
+  .description {
+    transform: translateZ(3rem);
+  }
+  
+  .cards img{
+display:inline-block;
+text-align:center;
+margin:0 auto;
+border:var(--BORDERS);
+  }
+.header_cards h2{
+   text-align:center;
+   text-transform:capitalize;
+   text-decoration:underline;
 }
