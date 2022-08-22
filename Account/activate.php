@@ -31,10 +31,3 @@ if (isset($_GET['email'], $_GET['code'])) {
         }
     }
 }
-if ($account['activation_code'] == 'activated') {
-    // account is activated
-    // Display home page etc
-} else {
-    // account is not activated
-    // redirect user or display an error
-}

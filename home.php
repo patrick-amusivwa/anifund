@@ -1,29 +1,20 @@
 <?php
-// We need to use sessions, so you should always start sessions using the below code.
-session_start();
-// If the user is not logged in redirect to the login page...
-if (!isset($_SESSION['loggedin'])) {
-    header('Location: Account/index.html');
-    exit;
-}
-$DATABASE_HOST = 'localhost';
-$DATABASE_USER = 'root';
-$DATABASE_PASS = '';
-$DATABASE_NAME = 'animals';
-$con = mysqli_connect($DATABASE_HOST, $DATABASE_USER, $DATABASE_PASS, $DATABASE_NAME);
-if (mysqli_connect_errno()) {
-    exit('Failed to connect to MySQL: ' . mysqli_connect_error());
-}
-// We don't have the password or email info stored in sessions so instead we can get the results from the database.
-$stmt = $con->prepare('SELECT password, email FROM users WHERE id = ?');
-// In this case we can use the account ID to get the account info.
-$stmt->bind_param('i', $_SESSION['id']);
-$stmt->execute();
-$stmt->bind_result($password, $email);
-$stmt->fetch();
-$stmt->close();
-?>
 
+include 'Account/config.php';
+session_start();
+$user_id = $_SESSION['user_id'];
+
+if (!isset($user_id)) {
+    header('locatio:index.php');
+};
+
+if (isset($_GET['logout'])) {
+    unset($user_id);
+    session_destroy();
+    header('location:login.php');
+}
+
+?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -52,16 +43,24 @@ $stmt->close();
 </head>
 
 <body>
+    <?php
+    $select = mysqli_query($conn, "SELECT * FROM `users` WHERE id = '$user_id'") or die('query failed');
+    if (mysqli_num_rows($select) > 0) {
+        $fetch = mysqli_fetch_assoc($select);
+    }
+    if ($fetch['image'] == '') {
+        echo '<img src="images/default-avatar.png">';
+    } else {
+        echo '<img src="uploaded_img/' . $fetch['image'] . '">';
+    }
+    ?>
     <!-- NAVBAR -->
     <header>
         <nav class="navbar navbar-expand-lg navbar-custom fixed-top" id="search-id">
             <a class="navbar-brand" href="index.html">animal crowdfund <i class="fas fa-paw" aria-hidden="true"></i></a>
-            <a class="navbar-brand" class="login" href="home.php"><img src="Account/uploads/avatar.jpg"> </i></a>
+            <a class="navbar-brand" class="login" href="home.php"><img
+                    src="Account/uploads/avatar.jpg"><?= $_SESSION['name'] ?></i></a>
             <nav class="navbar navbar-expand-lg navbar-custom fixed-top">
-                <a class="navbar-brand" href="index.html">AniFUND<i class="fas fa-paw" aria-hidden="true"></i></a>
-                <a class="navbar-brand" class="login" href="index.html"><i class="fa-solid fa-user-lock"
-                        aria-hidden="true"></i></a>
-
                 <div class="group">
                     <svg class="icon" aria-hidden="true" viewBox="0 0 24 24">
                         <g>

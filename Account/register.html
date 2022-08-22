@@ -1,36 +1,40 @@
-<!DOCTYPE html>
-<html>
+<?php
+// Change this to your connection info.
+$DATABASE_HOST = 'localhost';
+$DATABASE_USER = 'root';
+$DATABASE_PASS = '';
+$DATABASE_NAME = 'animals';
+// Try and connect using the info above.
+$con = mysqli_connect($DATABASE_HOST, $DATABASE_USER, $DATABASE_PASS, $DATABASE_NAME);
+if (mysqli_connect_errno()) {
+    // If there is an error with the connection, stop the script and display the error.
+    exit('Failed to connect to MySQL: ' . mysqli_connect_error());
+}
+// Now we check if the data was submitted, isset() function will check if the data exists.
+if (!isset($_POST['username'], $_POST['password'], $_POST['email'])) {
+    // Could not get the data that should have been sent.
+    exit('Please complete the registration form!');
+}
+// Make sure the submitted registration values are not empty.
+if (empty($_POST['username']) || empty($_POST['password']) || empty($_POST['email'])) {
+    // One or more values are empty.
+    exit('Please complete the registration form');
+}
+if ($_POST['password'] != ($_POST['password_2'])) {
+    exit('passwords do not match');
+}
+// We need to check if the account with that username exists.
+$username = $_POST["username"];
+$email = $_POST["email"];
+$pass = $_POST["password"];
 
-<head>
-    <meta charset="utf-8">
-    <title>Register</title>
-    <link rel="stylesheet" href="account.css">
-    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.1/css/all.css">
-</head>
-
-<body>
-    <div class="register">
-        <h1>Register</h1>
-        <form action="register.php" method="post" autocomplete="off" enctype="multipart/form-data">
-            <label for="username">
-                <i class="fas fa-user"></i>
-            </label>
-            <input type="text" name="username" placeholder="Username" id="username" required>
-            <label for="password">
-                <i class="fas fa-lock"></i>
-            </label>
-            <input type="password" name="password" placeholder="Password" id="password" required>
-            <label for="email">
-                <i class="fas fa-envelope"></i>
-            </label>
-            <input type="email" name="email" placeholder="Email" id="email" required>
-            <label for="email">
-                <i class="fas fa-image"></i>
-            </label>
-            <input type="file" name="filename" placeholder="file i.e .jpg" id="avatar">
-            <input type="submit" value="Register">
-        </form>
-    </div>
-</body>
-
-</html>
+$check_email = mysqli_query($conn, "SELECT Email FROM users where Email = '$email' ");
+if (mysqli_num_rows($check_email) > 0) {
+    echo ('Email Already exists');
+} else {
+    if ($_SERVER["REQUEST_METHOD"] == "POST") {
+        $result = mysqli_query($conn, "INSERT INTO usera (username, Email, Password) VALUES ('$username', '$email', '$password')");
+    }
+    echo ('Record Entered Successfully');
+}
+$con->close();
