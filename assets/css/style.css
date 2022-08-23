@@ -133,11 +133,13 @@ nav {
     place-content: center;
     border-bottom: var(--BORDERS);
     background: linear-gradient(315deg, #919386, #acae9f);
+    border: 1rem solid red;
 
 }
 
 .fixed-top {
     position: relative;
+    border: 3px solid green;
 }
 
 .navbar-brand {
@@ -148,14 +150,22 @@ nav {
     color: black;
     font-weight: bolder;
     z-index: 1000;
+    border: 3px solid red;
 
 
+}
+a .navbar-brand{
+    border: 3px solid red;
 }
 
 .navbar-brand img {
     border-radius: 50%;
-    width: 150px;
+    width: 50px;
     border: 3px solid yellow;
+    margin: auto;
+}
+.navbar-brand .username{
+    margin: auto;
 }
 
 /* select nth child  in link*/

@@ -1,20 +1,14 @@
 <?php
-
 include 'Account/config.php';
+
 session_start();
-$user_id = $_SESSION['user_id'];
 
-if (!isset($user_id)) {
-    header('locatio:index.php');
-};
-
-if (isset($_GET['logout'])) {
-    unset($user_id);
-    session_destroy();
-    header('location:login.php');
+if (!isset($_SESSION['username'])) {
+    header("Location: index.php");
 }
 
 ?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -43,23 +37,12 @@ if (isset($_GET['logout'])) {
 </head>
 
 <body>
-    <?php
-    $select = mysqli_query($conn, "SELECT * FROM `users` WHERE id = '$user_id'") or die('query failed');
-    if (mysqli_num_rows($select) > 0) {
-        $fetch = mysqli_fetch_assoc($select);
-    }
-    if ($fetch['image'] == '') {
-        echo '<img src="images/default-avatar.png">';
-    } else {
-        echo '<img src="uploaded_img/' . $fetch['image'] . '">';
-    }
-    ?>
+
     <!-- NAVBAR -->
     <header>
         <nav class="navbar navbar-expand-lg navbar-custom fixed-top" id="search-id">
-            <a class="navbar-brand" href="index.html">animal crowdfund <i class="fas fa-paw" aria-hidden="true"></i></a>
-            <a class="navbar-brand" class="login" href="home.php"><img
-                    src="Account/uploads/avatar.jpg"><?= $_SESSION['name'] ?></i></a>
+            <a class="navbar-brand" href="index.html">AniFUND <i class="fas fa-paw" aria-hidden="true"></i></a>
+
             <nav class="navbar navbar-expand-lg navbar-custom fixed-top">
                 <div class="group">
                     <svg class="icon" aria-hidden="true" viewBox="0 0 24 24">
@@ -117,6 +100,11 @@ if (isset($_GET['logout'])) {
                             </div>
                         </li>
                     </ul>
+                    <a class="navbar-brand" class="login" href="home.php"><img src="Account/uploads/avatar.jpg">
+                        <h6 class="username" style="color:orange;"><?= $_SESSION['username'] ?></h6></i>
+                        <i class="fa-solid fa-caret-down" style="margin: 3px auto;"></i>
+
+                    </a>
                 </div>
             </nav>
     </header>
@@ -141,10 +129,10 @@ if (isset($_GET['logout'])) {
                     </div>
                 </div>
             </section>
-            <!-- Our Goals
+            Our Goals
             <section id="our-goals">
                 <div class="section-title">
-                    
+
                 </div>
                 <div class="row">
                     <div class="col-md-6 col-lg-4">
@@ -196,38 +184,44 @@ if (isset($_GET['logout'])) {
                 </div>
 
                 <!- CARDS -->
-            <!-- <section class="header_cards">
-                <h2>more about what we do </h2>
-            </section>
-            <section class="cards">
-               
-                <article id="profile1" class="card">
-                    <figure>
-                        <img src="assets/images/one.jpg" alt="marley-img" width="300" height="300" title="marleys-image">
-                        <figcaption>every pet that comes to us a fighting chance.With proper medical attention and training, we believe every pet can be transformed
-                            into the perfect addition</figcaption>
-                    </figure>
-                    
-                </article>
-                <article id="profile2" class="card">
-                    <figure>
-                        <img src="assets/images/twojpg.jpg" alt="tina amusivwa" width="300" height="300" title="tinas image">
-                        <figcaption>we believe in second chances.That is why we will never put an unhealthy pet down.</figcaption>
-                    </figure>
-                  
-                </article>
-                <article id="profile3" class="card">
-                    <figure>
-                        <img src="assets/images/three.jpg" alt="simmy amusivwa" width="300" height="300" title="simmys image">
-                        <figcaption>we understand how hard it can be adjusting to your new life as a pet owner, which is
-                            why we are always available for advice, support and encouragement
-                            Just give us a ring, or an email! </figcaption>
-                    </figure> -->
-            </article>
+                    <section class="header_cards">
+                        <h2>more about what we do </h2>
+                    </section>
+                    <section class="cards">
 
+                        <article id="profile1" class="card">
+                            <figure>
+                                <img src="assets/images/one.jpg" alt="marley-img" width="300" height="300"
+                                    title="marleys-image">
+                                <figcaption>every pet that comes to us a fighting chance.With proper medical attention
+                                    and training, we believe every pet can be transformed
+                                    into the perfect addition</figcaption>
+                            </figure>
+
+                        </article>
+                        <article id="profile2" class="card">
+                            <figure>
+                                <img src="assets/images/twojpg.jpg" alt="tina amusivwa" width="300" height="300"
+                                    title="tinas image">
+                                <figcaption>we believe in second chances.That is why we will never put an unhealthy pet
+                                    down.</figcaption>
+                            </figure>
+
+                        </article>
+                        <article id="profile3" class="card">
+                            <figure>
+                                <img src="assets/images/three.jpg" alt="simmy amusivwa" width="300" height="300"
+                                    title="simmys image">
+                                <figcaption>we understand how hard it can be adjusting to your new life as a pet owner,
+                                    which is
+                                    why we are always available for advice, support and encouragement
+                                    Just give us a ring, or an email! </figcaption>
+                            </figure>
+                        </article>
+
+                    </section>
             </section>
-            </section>
-            <!-- TRIAL -->
+            <!--TRIAL -->
             <section class="header_cards">
                 <h2>more about what we do </h2>
             </section>

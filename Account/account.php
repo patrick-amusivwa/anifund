@@ -2,64 +2,75 @@
 
 include 'config.php';
 
-if (isset($_POST['save'])) {
+error_reporting(0);
 
-    $name = mysqli_real_escape_string($conn, $_POST['username']);
-    $email = mysqli_real_escape_string($conn, $_POST['email']);
-    $password = mysqli_real_escape_string($conn, md5($_POST['password']));
-    $cpassword = mysqli_real_escape_string($conn, md5($_POST['cpassword']));
-    if (isset($_FILES['image'])) {
-        $image = $_FILES['image']['name'];
-        $image_size = $_FILES['image']['size'];
-        $image_tmp_name = $_FILES['image']['tmp_name'];
-        $image_folder = 'uploaded_img/' . $image;
-    }
-    $select = mysqli_query($conn, "SELECT * FROM `users` WHERE email = '$email' AND password = '$password'") or die('query failed');
+session_start();
 
-    if (mysqli_num_rows($select) > 0) {
-        $message[] = 'user already exist';
-    } else {
-        if ($password != $cpassword) {
-            $message[] = 'confirm password not matched!';
-        } else {
-            $insert = mysqli_query($conn, "INSERT INTO `users`(name, email, password, image) VALUES('$name', '$email', '$password', '$image')") or die('query failed');
-
-            if ($insert) {
-                move_uploaded_file($image_tmp_name, $image_folder);
-                $message[] = 'registered successfully!';
-                header('location:login.php');
-            } else {
-                $message[] = 'registration failed!';
-            }
-        }
-    }
+if (isset($_SESSION['username'])) {
+    header("Location: login.php");
 }
 
-?>
+if (isset($_POST['submit'])) {
+    $username = $_POST['username'];
+    $email = $_POST['email'];
+    $password = md5($_POST['password']);
+    $cpassword = md5($_POST['cpassword']);
 
+    if ($password == $cpassword) {
+        $sql = "SELECT * FROM users WHERE email='$email'";
+        $result = mysqli_query($conn, $sql);
+        if (!$result->num_rows > 0) {
+            $sql = "INSERT INTO users (username, email, password)
+					VALUES ('$username', '$email', '$password')";
+            $result = mysqli_query($conn, $sql);
+            if ($result) {
+                echo "<script>alert('Wow! User Registration Completed.')</script>";
+                $username = "";
+                $email = "";
+                $_POST['password'] = "";
+                $_POST['cpassword'] = "";
+            } else {
+                echo "<script>alert('Woops! Something Wrong Went.')</script>";
+            }
+        } else {
+            echo "<script>alert('Woops! Email Already Exists.')</script>";
+        }
+    } else {
+        echo "<script>alert('Password Not Matched.')</script>";
+    }
+}
+?>
 <!-- login -->
 <?php
 
 include 'config.php';
+
 session_start();
+
+error_reporting(0);
+
+if (isset($_SESSION['username'])) {
+    header("Location: /home.php");
+}
 
 if (isset($_POST['login'])) {
 
-    $email = mysqli_real_escape_string($conn, $_POST['email']);
-    $pass = mysqli_real_escape_string($conn, md5($_POST['password']));
+    $email = $_POST['email'];
+    $password = md5($_POST['password']);
 
-    $select = mysqli_query($conn, "SELECT * FROM `users` WHERE email = '$email' AND password = '$pass'") or die('query failed');
-
-    if (mysqli_num_rows($select) > 0) {
-        $row = mysqli_fetch_assoc($select);
-        $_SESSION['user_id'] = $row['id'];
-        header('location:home.php');
+    $sql = "SELECT * FROM users WHERE email='$email' AND password='$password'";
+    $result = mysqli_query($conn, $sql);
+    if ($result->num_rows > 0) {
+        $row = mysqli_fetch_assoc($result);
+        $_SESSION['username'] = $row['username'];
+        header("Location: /home.php");
     } else {
-        $message[] = 'incorrect email or password!';
+        echo "<script>alert('Woops! Email or Password is Wrong.')</script>";
     }
 }
 
 ?>
+
 <!DOCTYPE html>
 <html>
 
@@ -89,7 +100,7 @@ if (isset($_POST['login'])) {
                 <i class="fa fa-twitter"></i>
             </div>
             <form id="login" class="input-group" action="" method="POST" autocomplete="off">
-                <input type="text" name="username" class="input-field" placeholder="Username" required />
+                <input type="email" name="email" class="input-field" placeholder="Email" required />
                 <input type="password" name="password" class="input-field" placeholder="Password" required />
                 <input type="checkbox" value="1" class="check-box" />Remember me<span></span>
                 <button type="submit" name="login" class="submit-btn">Login</button>
@@ -106,7 +117,7 @@ if (isset($_POST['login'])) {
                 <input type="checkbox" class="check-box" required />I agree to
                 <a href="#">Terms and conditions</a><span></span>
 
-                <button type="submit" name="save" class="submit-btn">Register</button>
+                <button type="submit" name="submit" class="submit-btn">Register</button>
             </form>
         </div>
     </div>

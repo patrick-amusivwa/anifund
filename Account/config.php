@@ -1,3 +1,12 @@
 <?php
 
-$conn = mysqli_connect('localhost','root','','animals') or die('connection failed');
+$server = "localhost";
+$user = "root";
+$pass = "";
+$database = "animals";
+
+$conn = mysqli_connect($server, $user, $pass, $database);
+
+if (!$conn) {
+    die("<script>alert('Connection Failed.')</script>");
+}

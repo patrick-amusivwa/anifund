@@ -14,18 +14,16 @@
   background-position: center;
   background-size: cover;
   position: absolute;
-  border:1rem solid red;
 }
 
 .form-box {
   width: 380px;
-  height: 480px;
+  min-height: 480px;
   position: relative;
   margin: 6% auto;
   background: white;
   padding: 5px;
   overflow: hidden;
-  border:3px solid yellow;
 }
 .button-box {
   width: 220px;
