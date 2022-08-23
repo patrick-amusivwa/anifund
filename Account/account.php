@@ -15,6 +15,10 @@ if (isset($_POST['submit'])) {
     $email = $_POST['email'];
     $password = md5($_POST['password']);
     $cpassword = md5($_POST['cpassword']);
+    $image = $_FILES['image']['name'];
+    $image_size = $_FILES['image']['size'];
+    $image_tmp_name = $_FILES['image']['tmp_name'];
+    $image_folder = 'uploaded_img/' . $image;
 
     if ($password == $cpassword) {
         $sql = "SELECT * FROM users WHERE email='$email'";
